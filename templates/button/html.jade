@@ -1,0 +1,27 @@
+style.
+  .button {
+  display: inline-block;
+  vertical-align: top;
+  }
+  .button table {
+  border-collapse: separate !important;
+  border: #ffffff 5px solid;
+  }
+  .button div {
+  font-family: arial;
+  font-size: 14px;
+  }
+  .button a,
+  .button span {
+  color: #ffffff !important;
+  text-decoration: none;
+  }
+
+.button
+  table(cellpadding='10', cellspacing='0')
+    tr
+      td(bgcolor='#666666', style='padding:10px 20px; border-radius:50px;')
+        div
+          b
+            a(href='#{action}', target='_blank')
+              span #{title}
