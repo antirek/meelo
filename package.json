@@ -1,0 +1,23 @@
+{
+  "name": "meelo",
+  "version": "0.0.1",
+  "description": "email HTML template",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/antirek/meelo"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/antirek/meelo/issues"
+  },
+  "homepage": "https://github.com/antirek/meelo",
+  "dependencies": {
+    "email-templates": "^2.0.1",
+    "jade": "^1.11.0"
+  }
+}
