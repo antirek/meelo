@@ -1,0 +1,102 @@
+meta(charset='utf-8')
+style.
+    body {
+    margin: 0;
+    }
+    a {
+    color: #0077cc !important;
+    text-decoration: underline;
+    }
+    a img {
+    border: 0;
+    }
+    a span {
+    color: #0077cc;
+    }
+    table {
+    border-collapse: collapse;
+    }
+    p {
+    margin: 1em 0;
+    font-family: arial;
+    font-size: 14px;
+    color: #666666;
+    line-height: 1.4em;
+    text-align: left;
+    }
+    .paragraph {
+    font-family: arial;
+    font-size: 14px;
+    color: #666666;
+    line-height: 1.4em;
+    text-align: left;
+    }
+    .button {
+    display: inline-block;
+    vertical-align: top;
+    }
+    .button table {
+    border-collapse: separate !important;
+    border: #ffffff 5px solid;
+    }
+    .button div {
+    font-family: arial;
+    font-size: 14px;
+    }
+    .button a,
+    .button span {
+    color: #ffffff !important;
+    text-decoration: none;
+    }
+    .content {
+    background-color: #ffffff;
+    }
+    .cover {
+        padding: 0;
+    }
+    .cover img {
+        width: 100%;
+        height: auto;
+        display: block;
+    }
+    .h1 {
+    font-family: arial;
+    font-size: 24px;
+    color: #666666;
+    line-height: 1.2em;
+    }
+    .newsletter {
+    margin: 0 auto;
+    max-width: 600px;
+    }
+    .wrapper {
+    width: 100%;
+    background-color: #f4f4f4;
+    table-layout: fixed;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    }
+    @media only screen and (max-width: 400px) {
+    /* причесываем верстку на малых мобильных экранах */
+    }
+    @media screen and (min-width: 401px) and (max-width: 600px) {
+    /* причесываем верстку на средних мобильных экранах */
+    }
+    @media screen and (min-width: 600px) {
+      .newsletter {
+        width: 600px !important;
+      }
+    }
+//if (gte mso 9)|(IE)
+  style.
+    /* здесь будут располагаться хаки для аутлука */
+  
+.wrapper(align='center')
+  //if (gte mso 9)|(IE)
+  table(align='center', width='600', cellpadding='0', cellspacing='0', style='border-collapse:collapse;')
+    tr
+      td
+  table.newsletter(align='center', width='100%', cellpadding='30', cellspacing='0')
+    | !{content}
+
+  //if (gte mso 9)|(IE)

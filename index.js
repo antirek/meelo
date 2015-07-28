@@ -1,26 +1,16 @@
-var EmailTemplate = require('email-templates').EmailTemplate;
-var path = require('path');
+var elements = require('./lib/elements');
+var Builder = require('./lib/builder');
 var Q = require('q');
 
-var render = function (name, options) {
-  var defer = new Q.defer();
-  var templateDir = path.join(__dirname, 'templates', name);
+var q = {};
+var builder = new Builder();
 
-  var element = new EmailTemplate(templateDir, {juiceOptions: {
-    preserveMediaQueries: false,
-    removeStyleTags: true
-  }});
+elements.map(function (element) {
+  q[element.name] = function (options) {
+    return builder.render(element.name, options);
+  }
+});
 
-  element.render(options, function (err, result){
-    if (err) {
-      defer.reject(err);
-    } else {
-      defer.resolve(result);
-    }
-  });
-
-  return defer.promise;
-};
 
 
 var headerOptions = {title: 'Joe'};
@@ -29,26 +19,64 @@ var buttonOptions = {action: 'http://www.google.com', title: 'Example action'};
 
 var paragraphOptions = {content: 'hello world'};
 
-var header, layout, button, paragraph;
+var header, layout, button, paragraph, section1, section2;
 
-render('button', buttonOptions)
+q.button(buttonOptions)
 .then(function (results) {
   button = results.html;
-  return render('header', headerOptions);
+  return q.header(headerOptions);
 })
 .then(function (results) {
   header = results.html;
-  paragraphOptions.content += button;
-  paragraphOptions.content += 'hello world';
-  return render('paragraph', paragraphOptions); 
+  //paragraphOptions.content += button;
+  //paragraphOptions.content += 'hello world';
+  return q.paragraph(paragraphOptions); 
 })
 .then(function (results) {
   paragraph = results.html;
-  var layoutOptions = {content: header + paragraph + button + button + button + button};
-  return render('layout', layoutOptions); 
+  var sectionOptions = {content: "<img src='https://placeholdit.imgix.net/~text?txtsize=36&txt=Cover&w=600&h=200'>", cssClass: 'cover'};
+  return q.section(sectionOptions); 
 })
 .then(function (results) {
-  console.log(results.html);
+  section1 = results.html; 
+  var sectionOptions = {content: header + paragraph, cssClass: 'content'};
+  return q.section(sectionOptions); 
+})
+.then(function (results) {
+  section2 = results.html;
+  var layoutOptions = {content: section1 + section2};
+  return q.layout(layoutOptions); 
+})
+.then(function (results) {
+  var defer = new Q.defer();
+  var img64 = require('img64');
+
+  img64.encodeImgs(results.html, function (err, string) {;
+      defer.resolve(string);
+  });
+  
+  return defer.promise;
+})
+.then(function (result) {
+  //console.log(results.html);
+  var mailHTML = result;
+
+  var Mailer = require('./lib/mailer');
+  var mailer = new Mailer();
+
+
+
+  var mailOptions = {
+    //from: 'Fred Foo ✔ <foo@blurdybloop.com>', // sender address
+    to: 'serge.dmitriev@gmail.com', // list of receivers
+    subject: 'Hello Moto', // Subject line
+    //text: 'Hello world ✔', // plaintext body
+    html: mailHTML  // html body
+  };
+  return mailer.send(mailOptions);
+})
+.then(function (result) {
+  console.log(result);
 })
 .fail(function (err) {
   console.log(err);

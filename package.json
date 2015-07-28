@@ -18,7 +18,9 @@
   "homepage": "https://github.com/antirek/meelo",
   "dependencies": {
     "email-templates": "^2.0.1",
+    "img64": "^0.3.1",
     "jade": "^1.11.0",
+    "nodemailer": "^1.4.0",
     "q": "^1.4.1"
   }
 }
