@@ -4,13 +4,23 @@ var q = new Renderer();
 
 var Mail = require('./lib/compose/mail');
 var Container = require('./lib/compose/container');
+var Row = require('./lib/compose/row');
 
 
 var mail = new Mail({background: '#ddd'});
 
-var container1 = new Container({content: 'hello'});
-var container2 = new Container({content: 'world'});
+var container1 = new Container();
+var container2 = new Container();
 
+var row1 = new Row({content: 'hello'});
+var row2 = new Row({content: 'world'});
+var row3 = new Row({content: 'world'});
+var row4 = new Row({content: 'world'});
+
+container1.addRow(row1);
+container1.addRow(row2);
+container2.addRow(row3);
+container2.addRow(row4);
 
 mail.addContainer(container1);
 mail.addContainer(container2);
