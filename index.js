@@ -19,17 +19,24 @@ var row3 = new Row();
 var row4 = new Row();
 
 
-var column1 = new Column({content: 'hello', cssClass: 'three', extendedCssClass: 'panel'});
-var column2 = new Column({content: 'world', cssClass: 'four', extendedCssClass: ''});
-var column3 = new Column({content: 'world', cssClass: 'three', extendedCssClass: 'panel'});
+var column1 = new Column({content: 'hello', cssClass: 'eight', extendedCssClass: 'text-pad panel'});
+var column2 = new Column({cssClass: 'eight', extendedCssClass: 'text-pad'});
+var column3 = new Column({cssClass: 'four', extendedCssClass: 'panel'});
 var column4 = new Column({content: 'world', cssClass: 'one'});
 
 
-row1.addColumn(column1);
+column2.addContent('<h1>Lopata</h1>');
+column2.addContent('<p>Dorem lorem ipsum</p>');
+
+column3.addContent('<h5>Actions</h5>');
+column3.addContent('<ul><li>Dorem lorem ipsum</li></ul>');
+
+column2.addContent('<img src="meelo.png">');
+
 row1.addColumn(column2);
 row1.addColumn(column3);
-row1.addColumn(column3);
 
+/*
 row2.addColumn(column3);
 row2.addColumn(column2);
 
@@ -40,12 +47,13 @@ row3.addColumn(column3);
 
 row4.addColumn(column3);
 row4.addColumn(column2);
+*/
 
 container1.addRow(row1);
-container1.addRow(row2);
+container1.addRow(row1);
 
-container2.addRow(row3);
-container2.addRow(row4);
+container2.addRow(row1);
+container2.addRow(row1);
 
 mail.addContainer(container1);
 mail.addContainer(container2);
@@ -53,5 +61,3 @@ mail.addContainer(container2);
 var qw = mail.compose(q);
 
 console.log(qw);
-
-
