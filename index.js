@@ -23,31 +23,31 @@ var header, layout, button, paragraph, section1, section2;
 
 q.button(buttonOptions)
 .then(function (results) {
-  button = results.html;
+  button = results;
   return q.header(headerOptions);
 })
 .then(function (results) {
-  header = results.html;
+  header = results;
   //paragraphOptions.content += button;
   //paragraphOptions.content += 'hello world';
   return q.paragraph(paragraphOptions); 
 })
 .then(function (results) {
-  paragraph = results.html;
+  paragraph = results;
   var sectionOptions = {content: "<img src='https://placeholdit.imgix.net/~text?txtsize=36&txt=Cover&w=600&h=200'>", cssClass: 'cover'};
   return q.section(sectionOptions); 
 })
 .then(function (results) {
-  section1 = results.html; 
-  var sectionOptions = {content: header + paragraph, cssClass: 'content'};
+  section1 = results; 
+  var sectionOptions = {content: header + paragraph + button, cssClass: 'content'};
   return q.section(sectionOptions); 
 })
 .then(function (results) {
-  section2 = results.html;
+  section2 = results;
   var layoutOptions = {content: section1 + section2};
   return q.layout(layoutOptions); 
 })
-.then(function (results) {
+/*.then(function (results) {
   var defer = new Q.defer();
   var img64 = require('img64');
 
@@ -57,27 +57,36 @@ q.button(buttonOptions)
   
   return defer.promise;
 })
-.then(function (result) {
+*/
+.then(function (results) {
   //console.log(results.html);
+
+  var juice = require('juice');
+  var result = juice(results, {removeStyleTags: false});
+
+  console.log(result);
+  /*
   var mailHTML = result;
 
   var Mailer = require('./lib/mailer');
   var mailer = new Mailer();
 
-
-
   var mailOptions = {
     //from: 'Fred Foo ✔ <foo@blurdybloop.com>', // sender address
-    to: 'serge.dmitriev@gmail.com', // list of receivers
+    //to: '5c5aebf594@emailtests.com', // list of receivers
+    to: 'serge.dmitriev@gmail.com',
     subject: 'Hello Moto', // Subject line
     //text: 'Hello world ✔', // plaintext body
     html: mailHTML  // html body
   };
   return mailer.send(mailOptions);
+  */
 })
+
 .then(function (result) {
   console.log(result);
 })
+
 .fail(function (err) {
   console.log(err);
 });

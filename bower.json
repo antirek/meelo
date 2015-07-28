@@ -1,0 +1,20 @@
+{
+  "name": "meelo",
+  "main": "index.js",
+  "version": "0.0.1",
+  "homepage": "https://github.com/antirek/meelo",
+  "authors": [
+    "antirek <serge.dmitriev@gmail.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "ink": "~1.0.5"
+  }
+}
