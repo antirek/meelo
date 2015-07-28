@@ -1,25 +1,33 @@
-var elements = require('./lib/elements');
-var Builder = require('./lib/builder');
-var Q = require('q');
+var Renderer = require('./lib/renderer');
 
-var q = {};
-var builder = new Builder();
+var q = new Renderer();
 
-elements.map(function (element) {
-  q[element.name] = function (options) {
-    return builder.render(element.name, options);
-  }
-});
+var Mail = require('./lib/compose/mail');
+var Container = require('./lib/compose/container');
 
 
+var mail = new Mail({background: '#ddd'});
 
+var container1 = new Container({content: 'hello'});
+var container2 = new Container({content: 'world'});
+
+
+mail.addContainer(container1);
+mail.addContainer(container2);
+
+
+var qw = mail.compose(q);
+console.log(qw);
+
+
+
+/*
 var headerOptions = {title: 'Joe'};
-
 var buttonOptions = {action: 'http://www.google.com', title: 'Example action'};
-
 var paragraphOptions = {content: 'hello world'};
-
 var header, layout, button, paragraph, section1, section2;
+
+
 
 q.button(buttonOptions)
 .then(function (results) {
@@ -58,6 +66,7 @@ q.button(buttonOptions)
   return defer.promise;
 })
 */
+/*
 .then(function (results) {
   //console.log(results.html);
 
@@ -81,12 +90,9 @@ q.button(buttonOptions)
   };
   return mailer.send(mailOptions);
   */
+/*
 })
-
-.then(function (result) {
-  console.log(result);
-})
-
 .fail(function (err) {
   console.log(err);
 });
+*/
