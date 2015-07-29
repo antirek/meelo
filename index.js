@@ -54,6 +54,6 @@ container2.addRow(row1);
 mail.addContainer(container1);
 mail.addContainer(container2);
 
-var qw = mail.build();
+var html = mail.build({useJuice: false});
 
-console.log(qw);
+console.log(html);
