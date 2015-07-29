@@ -1,5 +1,5 @@
 var Renderer = require('./lib/renderer');
-
+var juice = require('juice');
 var q = new Renderer();
 
 var Mail = require('./lib/compose/mail');
@@ -21,7 +21,7 @@ var row4 = new Row();
 
 var column1 = new Column({content: 'hello', cssClass: 'eight', extendedCssClass: 'text-pad panel'});
 var column2 = new Column({cssClass: 'eight'});
-var column3 = new Column({cssClass: 'four', extendedCssClass: 'text-pad panel', last: 'last'});
+var column3 = new Column({cssClass: 'four', extendedCssClass: 'panel', last: 'last'});
 var column4 = new Column({content: 'world', cssClass: 'one'});
 
 
@@ -33,7 +33,7 @@ column3.addContent('<ul><li>Dorem lorem ipsum</li></ul>');
 
 column2.addContent('<img src="meelo.png">');
 
-var button = new Button({action:'http://www.google.com', title: 'Google', cssClass: 'secondary'});
+var button = new Button({action: 'http://www.google.com', title: 'Google', cssClass: 'secondary round'});
 column2.addContent(button);
 
 row1.addColumn(column2);
@@ -63,6 +63,8 @@ container2.addRow(row1);
 mail.addContainer(container1);
 mail.addContainer(container2);
 
-var qw = mail.compose(q);
+var qw = mail.build(q);
+
+qw = juice(qw);
 
 console.log(qw);
