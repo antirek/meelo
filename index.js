@@ -10,9 +10,9 @@ var row2 = mail.row();
 var row3 = mail.row();
 var row4 = mail.row();
 
-var column1 = mail.column({content: 'hello', cssClass: 'eight', extendedCssClass: 'text-pad panel'});
+var column1 = mail.column({content: 'hello', cssClass: 'twelve', extendedCssClass: 'panel'});
 var column2 = mail.column({cssClass: 'eight'});
-var column3 = mail.column({cssClass: 'four', extendedCssClass: 'panel', last: 'last'});
+var column3 = mail.column({cssClass: 'four', extendedCssClass: 'panel'});
 var column4 = mail.column({content: 'world', cssClass: 'one'});
 
 
@@ -30,10 +30,10 @@ column2.addContent(button);
 row1.addColumn(column2);
 row1.addColumn(column3);
 
-/*
-row2.addColumn(column3);
-row2.addColumn(column3);
-row2.addColumn(column3);
+
+row2.addColumn(column1);
+//row2.addColumn(column3);
+//row2.addColumn(column1);
 
 /*
 row3.addColumn(column1);
