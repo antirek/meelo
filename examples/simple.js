@@ -14,7 +14,9 @@ var header = function () {
 
 var content = function () {
   var row = mail.row();
-  var column = mail.column({cssClass: 'eight', extendedCssClass: 'text-pad', offset: 'offset-by-two'});
+
+  var column1 = mail.column({content: '&nbsp;', cssClass: 'two', extendedCssClass: 'text-pad'});
+  var column = mail.column({cssClass: 'eight', extendedCssClass: 'text-pad'});
 
   var arr = [
     'h3 New updates are available for you!',
@@ -24,8 +26,9 @@ var content = function () {
   column.addContent(arr);
   column.addContent(mail.button({action: 'http://www.google.com/', title:'Get it!', cssClass:'primary round'}));
   column.addContent('<p>&nbsp;</p>');  
-  column.addContent('<img src="http://yastatic.net/morda-logo/i/arrow2/logo_simple.svg">');
+  column.addContent('<img src="http://images5.fanpop.com/image/photos/31000000/Meelo-avatar-the-legend-of-korra-31027849-500-428.png">');
 
+  row.addColumn(column1);
   row.addColumn(column);
   return row;
 };
@@ -53,7 +56,7 @@ mail.addContainer(container);
 var html = mail.build();
 
 
-/*
+
 
 var nodemailer = require('nodemailer');
 
@@ -79,10 +82,8 @@ transporter.sendMail(mailOptions, function(error, info){
     if(error){
         return console.log(error);
     }
-    console.log('Message sent: ' + info.response);
+    //console.log('Message sent: ' + info.response);
 
 });
-
-*/
 
 console.log(html);
