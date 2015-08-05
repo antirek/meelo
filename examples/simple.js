@@ -1,6 +1,12 @@
 var Meelo = require('../index');
 
-var meelo = new Meelo({background: '#ddd'});
+var subject = 'Attempl';
+var preheader = "Attention! Godzilla. All work fine. We ready meet you";
+
+var meelo = new Meelo({
+    background: '#ddd',
+    preheader: preheader
+  });
 
 var header = function () {
   var row = meelo.row();
@@ -23,7 +29,13 @@ var content = function () {
     'p All inclusive versions and updates you can download today.'
   ];
 
+var str = "h3 dsfdf,dsfdf\n" +
+          "  p sdfdsfdsf\n" +
+          "    a(href='http://www.google.com') Google";
+
+  
   column.addContent(arr);
+  column.addContent(str);
   column.addContent(meelo.button({action: 'http://www.google.com/', title:'Get it!', cssClass:'primary round'}));
   column.addContent('br');  
   column.addContent('<img src="http://images5.fanpop.com/image/photos/31000000/Meelo-avatar-the-legend-of-korra-31027849-500-428.png">');
@@ -53,3 +65,36 @@ container.addRow(footer());
 meelo.addContainer(container);
 
 var html = meelo.build();
+
+//console.log(html);
+
+
+var nodemailer = require('nodemailer');
+
+// create reusable transporter object using SMTP transport
+var transporter = nodemailer.createTransport({
+    service: 'Gmail',
+     auth: {
+            user: 'user',
+            pass: 'pass'
+        }
+});
+
+// NB! No need to recreate the transporter object. You can use
+// the same transporter object for all e-mails
+
+// setup e-mail data with unicode symbols
+var mailOptions = {
+    to: 'serge.dmitriev@gmail.com', // list of receivers
+    subject: subject, // Subject line    
+    html: html // html body
+};
+
+// send mail with defined transport object
+transporter.sendMail(mailOptions, function (error, info){
+    if(error){
+        return console.log(error);
+    }
+    console.log('Message sent: ' + info.response);
+
+});
