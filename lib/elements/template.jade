@@ -696,9 +696,11 @@ html(xmlns='http://www.w3.org/1999/xhtml')
     style(type='text/css').
       /* Your custom styles go here */
       .preheader { display:none !important; visibility:hidden; opacity:0; color:transparent; height:0px; width:0px; }
-  if preheader
-    span.preheader #{preheader}
+  
 
   body(style="background:#{background}")
+    if preheader
+      span.preheader #{preheader}
+      
     table.body(style="background:#{background}")      
       | !{content}
