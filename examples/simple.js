@@ -1,6 +1,12 @@
 var Meelo = require('../index');
 
-var meelo = new Meelo({background: '#ddd'});
+var subject = 'Attempl';
+var preheader = "Attention! Godzilla. All work fine. We ready meet you";
+
+var meelo = new Meelo({
+    background: '#ddd',
+    preheader: preheader
+  });
 
 var header = function () {
   var row = meelo.row();
@@ -29,7 +35,13 @@ var content = function () {
     }
   ];
 
+var str = "h3 dsfdf,dsfdf\n" +
+          "  p sdfdsfdsf\n" +
+          "    a(href='http://www.google.com') Google";
+
+  
   column.addContent(arr);
+  column.addContent(str);
   column.addContent(meelo.button({action: 'http://www.google.com/', title:'Get it!', cssClass:'primary round'}));
   column.addContent('br');  
   column.addContent('<img src="http://images5.fanpop.com/image/photos/31000000/Meelo-avatar-the-legend-of-korra-31027849-500-428.png">');
@@ -59,5 +71,3 @@ container.addRow(footer());
 meelo.addContainer(container);
 
 var html = meelo.build();
-
-console.log(html);
