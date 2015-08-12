@@ -20,7 +20,8 @@ Meelo > Container > Row > Column > Content
 
 ## Usage
 
-`````
+`````javascript 
+
 var Meelo = require('meelo');
 var meelo = new Meelo({background: '#ddd'});
 
@@ -28,8 +29,8 @@ var contentRow = function () {
   var row = meelo.row();
   var column = meelo.column({cssClass: 'twelve', extendedCssClass: 'text-pad'});
 
-  column.addContent('h1 Good day, Vasya');                 //use jade
-  column.addContent('<p>New updates are available!</p>');  //use plain html
+  column.addContent('h1 Good day, Meelo!');                 //use jade syntax
+  column.addContent('<p>New updates are available!</p>');   //use plain html
 
   row.addColumn(column);
   return row;
