@@ -1,9 +1,9 @@
-var Meelo = require('../index');
+var meelo = require('../index');
 
 var subject = 'Attempl';
 var preheader = "Attention! Godzilla. All work fine. We ready meet you";
 
-var meelo = new Meelo({
+var mail = meelo.mail({
     background: '#ddd',
     preheader: preheader
   });
@@ -68,6 +68,8 @@ container.addRow(header());
 container.addRow(content());
 container.addRow(footer());
 
-meelo.addContainer(container);
+mail.addContainer(container);
 
-var html = meelo.build();
+var html = mail.build();
+
+console.log(html);

@@ -22,8 +22,8 @@ Meelo > Container > Row > Column > Content
 
 `````javascript 
 
-var Meelo = require('meelo');
-var meelo = new Meelo({background: '#ddd'});
+var meelo = require('meelo');
+var mail = meelo.mail({background: '#ddd'});
 
 var contentRow = function () {
   var row = meelo.row();
@@ -39,9 +39,9 @@ var contentRow = function () {
 var container = meelo.container({background: '#fff'});
 
 container.addRow(contentRow());
-meelo.addContainer(container);
+mail.addContainer(container);
 
-var html = meelo.build();
+var html = mail.build();
 
 `````
 
