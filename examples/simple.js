@@ -20,7 +20,13 @@ var content = function () {
 
   var arr = [
     'h3 New updates are available for you!',
-    'p All inclusive versions and updates you can download today.'
+    'p All inclusive versions and updates you can download today.',
+    {
+      'div.red': {
+        'h1': 'Hello',
+        'p': 'Attention'
+      }
+    }
   ];
 
   column.addContent(arr);
@@ -53,3 +59,5 @@ container.addRow(footer());
 meelo.addContainer(container);
 
 var html = meelo.build();
+
+console.log(html);

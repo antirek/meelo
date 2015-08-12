@@ -17,8 +17,8 @@
   },
   "homepage": "https://github.com/antirek/meelo",
   "dependencies": {
-    "img64": "^0.3.1",
     "jade": "^1.11.0",
+    "jso2jade": "0.0.2",
     "juice": "^1.3.4"
   }
 }
