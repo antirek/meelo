@@ -4,14 +4,14 @@
   "description": "email HTML template",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jasmine"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/antirek/meelo"
   },
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/antirek/meelo/issues"
   },
@@ -20,5 +20,10 @@
     "jade": "^1.11.0",
     "jso2jade": "0.0.2",
     "juice": "^1.3.4"
+  },
+  "devDependencies": {
+    "jade": "^1.11.0",
+    "jasmine": "^2.3.2",
+    "jso2jade": "0.0.2"
   }
 }
