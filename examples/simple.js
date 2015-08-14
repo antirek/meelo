@@ -3,16 +3,11 @@ var meelo = require('../index');
 var subject = 'Attempl';
 var preheader = "Attention! Godzilla. All work fine. We ready meet you";
 
-var mail = meelo.mail({
-    background: '#ddd',
-    preheader: preheader
-  });
-
 var header = function () {
   var row = meelo.row();
   var column = meelo.column({cssClass: 'twelve', extendedCssClass: 'text-pad'});
 
-  column.addContent('h1 Good day, Vasya');
+  column.addContent('h1 Good day, Meelo');
 
   row.addColumn(column);
   return row;
@@ -21,33 +16,21 @@ var header = function () {
 var content = function () {
   var row = meelo.row();
 
-  var column1 = meelo.column({content: '&nbsp;', cssClass: 'two', extendedCssClass: 'text-pad'});
-  var column = meelo.column({cssClass: 'eight', extendedCssClass: 'text-pad'});
+  var column1 = meelo.column({content: '&nbsp;', cssClass: 'one', extendedCssClass: 'text-pad'});
+  var column2 = meelo.column({cssClass: 'ten', extendedCssClass: 'text-pad'});
 
-  var arr = [
+  var mainText = [
     'h3 New updates are available for you!',
-    'p All inclusive versions and updates you can download today.',
-    {
-      'div.red': {
-        'h1': 'Hello',
-        'p': 'Attention'
-      }
-    }
+    'p All inclusive versions and updates you can download today.'    
   ];
 
-var str = "h3 dsfdf,dsfdf\n" +
-          "  p sdfdsfdsf\n" +
-          "    a(href='http://www.google.com') Google";
-
-  
-  column.addContent(arr);
-  column.addContent(str);
-  column.addContent(meelo.button({action: 'http://www.google.com/', title:'Get it!', cssClass:'primary round'}));
-  column.addContent('br');  
-  column.addContent('<img src="http://images5.fanpop.com/image/photos/31000000/Meelo-avatar-the-legend-of-korra-31027849-500-428.png">');
+  column2.addContent(mainText);
+  column2.addContent(meelo.button({action: 'http://www.google.com/', title:'Get it now!', cssClass:'primary round'}));
+  column2.addContent('hr');  
+  column2.addContent('<img src="http://images5.fanpop.com/image/photos/31000000/Meelo-avatar-the-legend-of-korra-31027849-500-428.png">');
 
   row.addColumn(column1);
-  row.addColumn(column);
+  row.addColumn(column2);
   return row;
 };
 
@@ -61,6 +44,12 @@ var footer = function () {
   row.addColumn(column);
   return row;
 };
+
+
+var mail = meelo.mail({
+  background: '#ddd',
+  preheader: preheader
+});
 
 var container = meelo.container({background: '#fff'});
 
